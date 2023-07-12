@@ -1,0 +1,6 @@
+framework module DXGrid {
+  umbrella header "DXGrid.h"
+
+  export *
+  module * { export * }
+}

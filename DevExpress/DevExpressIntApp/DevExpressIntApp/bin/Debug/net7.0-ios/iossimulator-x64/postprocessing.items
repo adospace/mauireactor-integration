@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="DevExpressIntApp.app/DevExpressIntApp">
+      <BCSymbolMapName>DevExpressIntApp.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>true</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>true</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>DevExpressIntApp.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile>/Users/adospace/source/github/mauireactor-integration/DevExpress/DevExpressIntApp/DevExpressIntApp/obj/Debug/net7.0-ios/iossimulator-x64/mtouch-symbols.list</SymbolFile>
+      <DSymName>DevExpressIntApp.app.dSYM</DSymName>
+      <SourceProjectPath>/Users/adospace/source/github/mauireactor-integration/DevExpress/DevExpressIntApp/DevExpressIntApp</SourceProjectPath>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>

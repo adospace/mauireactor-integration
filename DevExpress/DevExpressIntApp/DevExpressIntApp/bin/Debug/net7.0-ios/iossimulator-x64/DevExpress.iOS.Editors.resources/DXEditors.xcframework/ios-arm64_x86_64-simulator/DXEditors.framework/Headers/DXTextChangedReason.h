@@ -1,0 +1,10 @@
+#include <Foundation/Foundation.h>
+
+typedef NSString *DXTextChangedReason NS_TYPED_ENUM;
+
+NS_ASSUME_NONNULL_BEGIN
+
+FOUNDATION_EXPORT DXTextChangedReason const DXTextChangedReasonUserInput;
+FOUNDATION_EXPORT DXTextChangedReason const DXTextChangedReasonProgrammatic;
+
+NS_ASSUME_NONNULL_END

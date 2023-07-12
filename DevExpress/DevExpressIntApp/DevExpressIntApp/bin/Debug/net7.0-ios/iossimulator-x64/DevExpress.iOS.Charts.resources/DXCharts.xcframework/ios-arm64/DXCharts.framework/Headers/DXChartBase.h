@@ -1,0 +1,67 @@
+/*Copyright (c) 2017 Developer Express Inc.
+{*******************************************************************}
+{                                                                   }
+{       Developer Express Mobile Chart Library                      }
+{                                                                   }
+{                                                                   }
+{       Copyright (c) 2017 Developer Express Inc.                   }
+{       ALL RIGHTS RESERVED                                         }
+{                                                                   }
+{   The entire contents of this file is protected by U.S. and       }
+{   International Copyright Laws. Unauthorized reproduction,        }
+{   reverse-engineering, and distribution of all or any portion of  }
+{   the code contained in this file is strictly prohibited and may  }
+{   result in severe civil and criminal penalties and will be       }
+{   prosecuted to the maximum extent possible under the law.        }
+{                                                                   }
+{   RESTRICTIONS                                                    }
+{                                                                   }
+{   THIS SOURCE CODE AND ALL RESULTING INTERMEDIATE FILES           }
+{   ARE CONFIDENTIAL AND PROPRIETARY TRADE                          }
+{   SECRETS OF DEVELOPER EXPRESS INC. THE REGISTERED DEVELOPER IS   }
+{   LICENSED TO DISTRIBUTE THE PRODUCT AND ALL ACCOMPANYING         }
+{   CONTROLS AS PART OF AN EXECUTABLE PROGRAM ONLY.                 }
+{                                                                   }
+{   THE SOURCE CODE CONTAINED WITHIN THIS FILE AND ALL RELATED      }
+{   FILES OR ANY PORTION OF ITS CONTENTS SHALL AT NO TIME BE        }
+{   COPIED, TRANSFERRED, SOLD, DISTRIBUTED, OR OTHERWISE MADE       }
+{   AVAILABLE TO OTHER INDIVIDUALS WITHOUT EXPRESS WRITTEN CONSENT  }
+{   AND PERMISSION FROM DEVELOPER EXPRESS INC.                      }
+{                                                                   }
+{   CONSULT THE END USER LICENSE AGREEMENT FOR INFORMATION ON       }
+{   ADDITIONAL RESTRICTIONS.                                        }
+{                                                                   }
+{*******************************************************************}
+*/
+#import <UIKit/UIKit.h>
+#import "DXSelectionInfo.h"
+#import "DXChartHitInfo.h"
+#import "DXChartDelegate.h"
+#import "DXLegend.h"
+#import "DXEnums.h"
+
+@interface DXChartBase : UIView
+
+NS_ASSUME_NONNULL_BEGIN
+-(instancetype) init;
+-(instancetype) initWithFrame:(CGRect)frame;
+-(instancetype) initWithCoder:(NSCoder*)aDecoder;
+NS_ASSUME_NONNULL_END
+
+@property (readwrite, weak, nonatomic, nullable) id<DXChartDelegate> delegate;
+
+@property (readwrite, nullable) DXLegend * legend;
+@property (readwrite, atomic) DXChartSelectionMode selectionMode;
+@property (readwrite, atomic) DXChartSelectionKind selectionKind;
+@property (readonly, nonatomic, nonnull) NSArray<DXSeriesPointInfo*>* selectedItems;
+
+- (nonnull DXChartHitInfo*)calcHitInfo: (CGPoint) point;
+- (void)setSelected: (BOOL) isSelected seriesWithIndex: (NSInteger)seriesIndex pointWithIndex: (NSInteger)pointIndex;
+- (void)suspendRender;
+- (void)resumeRender;
+- (void)showHintForPointWithIndex:(NSInteger)pointIndex ofSeriesWithIndex:(NSInteger) seriesIndex;
+- (void)showHint:(CGPoint)point;
+- (void)hideHint;
+- (void)setTheme:(DXChartTheme) themeType;
+
+@end

@@ -1,0 +1,6 @@
+framework module DXCharts {
+  umbrella header "DXCharts.h"
+
+  export *
+  module * { export * }
+}

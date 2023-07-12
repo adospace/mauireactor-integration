@@ -1,0 +1,6 @@
+framework module DXScheduler {
+  umbrella header "DXScheduler.h"
+
+  export *
+  module * { export * }
+}

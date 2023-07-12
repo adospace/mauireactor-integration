@@ -1,0 +1,2 @@
+Platforms/Android/Resorces/drawable/arrow_group_down.xml;drawable/arrow_group_down.xml
+Platforms/Android/Resorces/drawable/arrow_group_up.xml;drawable/arrow_group_up.xml
