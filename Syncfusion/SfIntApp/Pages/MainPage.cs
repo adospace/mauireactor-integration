@@ -27,7 +27,15 @@ class MainPage : Component<MainPageState>
                     {
                         new Entry()
                     }
-                    .Hint("Name")
+                    .Hint("Name"),
+                    new SfTextInputLayout
+                    {
+                        new Entry()
+                    }
+                    .Hint("Password")
+                    .EnablePasswordVisibilityToggle(true)
+                    ,
+
                 }
                 .VCenter()
                 .Spacing(25)
