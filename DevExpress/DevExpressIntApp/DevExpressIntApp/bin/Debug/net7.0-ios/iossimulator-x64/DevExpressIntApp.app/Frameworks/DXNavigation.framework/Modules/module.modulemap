@@ -1,6 +1,0 @@
-framework module DXNavigation {
-  umbrella header "DXNavigation.h"
-
-  export *
-  module * { export * }
-}

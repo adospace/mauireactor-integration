@@ -1,6 +1,0 @@
-framework module DXEditors {
-  umbrella header "DXEditors.h"
-
-  export *
-  module * { export * }
-}
