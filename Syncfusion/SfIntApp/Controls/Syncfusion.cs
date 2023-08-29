@@ -53,3 +53,15 @@ public abstract partial class SfContentView<T>
 public partial class SfTextInputLayout 
 {
 }
+
+[Scaffold(typeof(Syncfusion.Maui.Popup.SfPopup))]
+public partial class SfPopup
+{
+    public SfPopup Content(Func<VisualNode> render)
+    {
+        this.Set(Syncfusion.Maui.Popup.SfPopup.ContentTemplateProperty,
+            new MauiControls.DataTemplate(() => TemplateHost.Create(render()).NativeElement));
+
+        return this;
+    }
+}
