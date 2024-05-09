@@ -10,7 +10,17 @@ namespace BottomSheetApp.Pages;
 
 static class BottomSheetManager
 {
+    class BottomSheetVisualContainer : ContentView
+    {
+        public void Unmount()
+        {
+            base.OnUnmount();
+        }
+    }
+
+
     static BottomSheet? _sheet;
+    static BottomSheetVisualContainer? _bottomSheetVisualContainer;
 
     public static async Task ShowAsync(Func<VisualNode> contentRender, Action<BottomSheet>? configureSheet = null)
     {
@@ -19,9 +29,14 @@ static class BottomSheetManager
             return;
         }
 
+        _bottomSheetVisualContainer = new BottomSheetVisualContainer
+        {
+            contentRender()
+        };
+
         _sheet = new BottomSheet
         {
-            Content = (MauiControls.View)TemplateHost.Create(contentRender()).NativeElement!
+            Content = (MauiControls.View)TemplateHost.Create(_bottomSheetVisualContainer).NativeElement!
         };
 
         configureSheet?.Invoke(_sheet);
@@ -33,7 +48,13 @@ static class BottomSheetManager
 
     private static void _sheet_Dismissed(object? sender, DismissOrigin e)
     {
-        if (_sheet == null) return;
+        if (_sheet == null)
+        {
+            return;
+        }
+
+        _bottomSheetVisualContainer?.Unmount();
+
         _sheet.Dismissed -= _sheet_Dismissed;
         _sheet = null;
     }
@@ -69,14 +90,26 @@ class MainPage : Component
     async void ShowBottomSheet()
     {
         await BottomSheetManager.ShowAsync(
-            () => VStack(
-                Label("Hi from bottom sheet!"),
-                Button("Close").OnClicked(HideBottomSheet)
-                ),
+            () => new BottomComponent(),
             sheet => sheet.HasBackdrop = true);
     }
+}
 
-    private async void HideBottomSheet()
+class BottomComponent : Component
+{
+    protected override void OnWillUnmount()
+    {
+        System.Diagnostics.Debug.WriteLine("BottomComponent.OnWillUnmount()");
+        base.OnWillUnmount();
+    }
+
+    public override VisualNode Render()
+        => VStack(
+            Label("Hi from bottom sheet!"),
+            Button("Close").OnClicked(HideBottomSheet)
+        );
+
+    async void HideBottomSheet()
     {
         await BottomSheetManager.DismissAsync();
     }
