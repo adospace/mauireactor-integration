@@ -285,7 +285,6 @@ namespace UraniumIntApp.Controls
 
         Func<object, VisualNode>? ITreeView.ItemTemplate { get; set; }
 
-        Func<object, VisualNode>? ICustomDataTemplateOwner.ItemTemplate => ((ITreeView)this).ItemTemplate;
 
         private CustomDataTemplate? _customDataTemplate;
 
@@ -342,6 +341,11 @@ namespace UraniumIntApp.Controls
         protected override void OnRemoveChild(VisualNode widget, BindableObject childControl)
         {
             //base.OnRemoveChild(widget, childControl);
+        }
+
+        public VisualNode? GetVisualNodeForItem(object item)
+        {
+            return ((ITreeView)this).ItemTemplate?.Invoke(item);
         }
     }
 
