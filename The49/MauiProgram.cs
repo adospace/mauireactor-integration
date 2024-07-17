@@ -12,7 +12,7 @@ namespace BottomSheetApp
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiReactorApp<MainPage>(app =>
+                .UseMauiReactorApp<TestCase240>(app =>
                 {
                     app.AddResource("Resources/Styles/Colors.xaml");
                     app.AddResource("Resources/Styles/Styles.xaml");
