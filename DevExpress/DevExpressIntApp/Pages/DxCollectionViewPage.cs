@@ -12,6 +12,7 @@ class DxCollectionViewPage : Component
         return new ContentPage()
         {
             new DXCollectionView()
+                
                 .ItemsSource(new []{ "Item1", "Item2" }, item => new Label(item))
         };
     }
