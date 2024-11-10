@@ -10,7 +10,7 @@ namespace SfIntApp
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiReactorApp<MainPage>()
+                .UseMauiReactorApp<ListViewPage>()
                 .ConfigureSyncfusionCore()
 #if DEBUG
             .EnableMauiReactorHotReload()
