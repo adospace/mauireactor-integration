@@ -131,7 +131,7 @@ public partial class SfListView<T> : SfView<T>, ISfListView where T : Syncfusion
         {
             if (thisAsIItemsView.GroupHeaderTemplate != null)
             {
-                _groupHeaderTemplate = new FuncDataTemplate(this, (item, owner) => ((ISfListView)owner).GroupHeaderTemplate?.Invoke(item));
+                _groupHeaderTemplate = new FuncDataTemplate(this, (owner, item) => ((ISfListView)owner).GroupHeaderTemplate?.Invoke(item));
                 NativeControl.GroupHeaderTemplate = _groupHeaderTemplate.DataTemplate;
             }
         }
@@ -143,7 +143,7 @@ public partial class SfListView<T> : SfView<T>, ISfListView where T : Syncfusion
         }
     }
 
-    protected override void OnMigrated(VisualNode newNode)
+    partial void Migrated(VisualNode newNode)
     {
         var newItemsView = ((SfListView<T>)newNode);
         newItemsView._groupHeaderTemplate = _groupHeaderTemplate;
@@ -151,9 +151,8 @@ public partial class SfListView<T> : SfView<T>, ISfListView where T : Syncfusion
         {
             newItemsView._groupHeaderTemplate.Owner = ((SfListView<T>)newNode);
         }
-
-        base.OnMigrated(newNode);
     }
+
 }
 
 public static partial class SfListViewExtensions
@@ -201,3 +200,6 @@ public static partial class SfListViewExtensions
         return listView;
     }
 }
+
+[Scaffold(typeof(Syncfusion.Maui.Carousel.SfCarousel), implementItemTemplate: true)]
+public partial class SfCarousel { }

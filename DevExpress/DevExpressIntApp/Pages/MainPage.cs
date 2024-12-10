@@ -20,7 +20,11 @@ class MainPage : Component<MainPageState>
         {
             new FlyoutItem("DxCollectionView")
             {
-                new DxCollectionViewPage()
+                new CollectionViewTestPage()
+            },
+            new FlyoutItem("DxButton")
+            {
+                new ButtonsTestPage()
             }
         }
         .ItemTemplate(RenderItemTemplate);
