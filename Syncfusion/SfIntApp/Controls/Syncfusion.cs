@@ -7,6 +7,8 @@ using System.Windows.Input;
 using MauiReactor;
 using MauiReactor.Internals;
 using Microsoft.Maui.Controls;
+using Syncfusion.Maui.Buttons;
+using Syncfusion.Maui.Core;
 
 namespace SfIntApp.Controls;
 
@@ -203,3 +205,23 @@ public static partial class SfListViewExtensions
 
 [Scaffold(typeof(Syncfusion.Maui.Carousel.SfCarousel), implementItemTemplate: true)]
 public partial class SfCarousel { }
+
+
+[Scaffold(typeof(Syncfusion.Maui.Buttons.ToggleButton))]
+partial class ToggleButton { }
+
+
+[Scaffold(typeof(Syncfusion.Maui.Buttons.SfCheckBox))]
+partial class SfCheckbox { }
+
+
+
+[Scaffold(typeof(Syncfusion.Maui.Core.ButtonBase))]
+partial class ButtonBase { }
+
+
+
+[Scaffold(typeof(Syncfusion.Maui.Buttons.SfButton))]
+partial class SfButton { }
+
+
