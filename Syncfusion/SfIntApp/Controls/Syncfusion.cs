@@ -37,19 +37,6 @@ public abstract partial class SfContentView<T>
 
         base.OnAddChild(widget, childControl);
     }
-
-    protected override void OnRemoveChild(VisualNode widget, BindableObject childControl)
-    {
-        NativeControl.EnsureNotNull();
-        if (childControl is View content &&
-            NativeControl.Content == content)
-        {
-            NativeControl.Content = null;
-        }
-
-
-        base.OnRemoveChild(widget, childControl);
-    }
 }
 
 [Scaffold(typeof(Syncfusion.Maui.Core.SfTextInputLayout))]
@@ -212,7 +199,7 @@ partial class ToggleButton { }
 
 
 [Scaffold(typeof(Syncfusion.Maui.Buttons.SfCheckBox))]
-partial class SfCheckbox { }
+partial class SfCheckBox { }
 
 
 
@@ -225,3 +212,114 @@ partial class ButtonBase { }
 partial class SfButton { }
 
 
+[Scaffold(typeof(Syncfusion.Maui.NavigationDrawer.SfNavigationDrawer))]
+public partial class SfNavigationDrawer
+{
+    protected override void OnAddChild(VisualNode widget, BindableObject childControl)
+    {
+        Validate.EnsureNotNull(NativeControl);
+
+        if (widget is DrawerSettings)
+        {
+            NativeControl.DrawerSettings = (Syncfusion.Maui.NavigationDrawer.DrawerSettings)childControl;
+        }
+        else if (childControl is View content)
+        {
+            NativeControl.ContentView = content;
+        }
+
+        base.OnAddChild(widget, childControl);
+    }
+}
+
+[Scaffold(typeof(Syncfusion.Maui.Core.Internals.SfNavigationDrawerExt))]
+public partial class SfNavigationDrawerExt
+{
+}
+
+public partial interface IDrawerSettings
+{
+    VisualNode? DrawerHeaderView { get; set; }
+
+    VisualNode? DrawerFooterView { get; set; }
+
+    VisualNode? DrawerContentView { get; set; }
+
+}
+
+[Scaffold(typeof(Syncfusion.Maui.NavigationDrawer.DrawerSettings))]
+public partial class DrawerSettings
+{
+}
+
+public partial class DrawerSettings<T> 
+{
+    VisualNode? IDrawerSettings.DrawerHeaderView { get; set; }
+
+    VisualNode? IDrawerSettings.DrawerFooterView { get; set; }
+
+    VisualNode? IDrawerSettings.DrawerContentView { get; set; }
+
+    protected override IEnumerable<VisualNode> RenderChildren()
+    {
+        var thisAsIDrawerSettings = (IDrawerSettings)this;
+        if (thisAsIDrawerSettings.DrawerHeaderView != null)
+        {
+            yield return thisAsIDrawerSettings.DrawerHeaderView;
+        }
+        if (thisAsIDrawerSettings.DrawerFooterView != null)
+        {
+            yield return thisAsIDrawerSettings.DrawerFooterView;
+        }
+        if (thisAsIDrawerSettings.DrawerContentView != null)
+        {
+            yield return thisAsIDrawerSettings.DrawerContentView;
+        }
+    }
+
+    protected override void OnAddChild(VisualNode widget, BindableObject childControl)
+    {
+        Validate.EnsureNotNull(NativeControl);
+
+        if (childControl is View content)
+        {
+            var thisAsIDrawerSettings = (IDrawerSettings)this;
+            if (widget == thisAsIDrawerSettings.DrawerHeaderView)
+            {
+                NativeControl.DrawerHeaderView = content;
+            }
+            else if (widget == thisAsIDrawerSettings.DrawerFooterView)
+            {
+                NativeControl.DrawerFooterView = content;
+            }
+            else if (widget == thisAsIDrawerSettings.DrawerContentView)
+            {
+                NativeControl.DrawerContentView = content;
+            }
+        }
+
+        base.OnAddChild(widget, childControl);
+    }
+
+}
+
+public static partial class DrawerSettingsExtensions
+{
+    public static T DrawerHeaderView<T>(this T drawerSettings, VisualNode? view) where T : IDrawerSettings
+    {
+        drawerSettings.DrawerHeaderView = view;
+        return drawerSettings;
+    }
+
+    public static T DrawerFooterView<T>(this T drawerSettings, VisualNode? view) where T : IDrawerSettings
+    {
+        drawerSettings.DrawerFooterView = view;
+        return drawerSettings;
+    }
+
+    public static T DrawerContentView<T>(this T drawerSettings, VisualNode? view) where T : IDrawerSettings
+    {
+        drawerSettings.DrawerContentView = view;
+        return drawerSettings;
+    }
+}

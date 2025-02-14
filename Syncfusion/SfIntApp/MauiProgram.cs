@@ -10,11 +10,8 @@ namespace SfIntApp
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiReactorApp<ButtonsPage>()
+                .UseMauiReactorApp<NavigationDrawerPage>()
                 .ConfigureSyncfusionCore()
-#if DEBUG
-            .EnableMauiReactorHotReload()
-#endif
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
