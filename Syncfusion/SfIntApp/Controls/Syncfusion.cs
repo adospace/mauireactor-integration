@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using AndroidX.Annotations;
 using MauiReactor;
 using MauiReactor.Internals;
 using Microsoft.Maui.Controls;
@@ -321,5 +322,49 @@ public static partial class DrawerSettingsExtensions
     {
         drawerSettings.DrawerContentView = view;
         return drawerSettings;
+    }
+}
+
+
+[Scaffold(typeof(Syncfusion.Maui.TabView.SfTabView))]
+public partial class SfTabView
+{
+    protected override void OnAddChild(VisualNode widget, BindableObject childControl)
+    {
+        Validate.EnsureNotNull(NativeControl);
+
+        if (childControl is Syncfusion.Maui.TabView.SfTabItem tabItem)
+        {
+            NativeControl.Items.Add(tabItem);
+        }
+        else
+        {
+            base.OnAddChild(widget, childControl);
+        }
+    }
+
+    protected override void OnRemoveChild(VisualNode widget, BindableObject childControl)
+    {
+        Validate.EnsureNotNull(NativeControl);
+
+        if (childControl is Syncfusion.Maui.TabView.SfTabItem tabItem)
+        {
+            NativeControl.Items.Remove(tabItem);
+        }
+        else
+        {
+            base.OnRemoveChild(widget, childControl);
+        }
+    }
+
+}
+
+[Scaffold(typeof(Syncfusion.Maui.TabView.SfTabItem))]
+public partial class SfTabItem
+{
+    public SfTabItem(string header, params IEnumerable<VisualNode?>? children)
+        :this(children)
+    {
+        this.Header(header);
     }
 }
