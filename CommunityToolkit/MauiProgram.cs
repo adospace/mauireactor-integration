@@ -13,7 +13,7 @@ namespace CommunityToolkit
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiReactorApp<PopupServiceTestPage>(app =>
+                .UseMauiReactorApp<ExpanderTestPage>(app =>
                 {
                     app.UseTheme<ApplicationTheme>();
                 },
