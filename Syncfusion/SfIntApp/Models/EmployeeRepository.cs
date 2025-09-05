@@ -11,7 +11,7 @@ public record Employee(string Name, string Designation, string ImagePath, string
 
 public class EmployeeRepository
 {
-    private ObservableCollection<Employee> _employees;
+    private ObservableCollection<Employee> _employees = [];
 
     public ObservableCollection<Employee> Employees
     {

@@ -6,7 +6,7 @@ public record BookInfo(string BookName, string BookDescription);
 
 public class BookInfoRepository
 {
-    private ObservableCollection<BookInfo> bookInfo;
+    private ObservableCollection<BookInfo> bookInfo = [];
 
     public ObservableCollection<BookInfo> BookInfo
     {

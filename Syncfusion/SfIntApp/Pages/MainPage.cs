@@ -18,7 +18,7 @@ class MainPageState
 
     public List<PickerItem> Items { get; set; } = Enumerable.Range(1, 10).Select(_ => new PickerItem($"Item {_}")).ToList();
 
-    public PickerItem SelectedItem { get; set; }
+    public PickerItem? SelectedItem { get; set; }
 }
 
 class MainPage : Component<MainPageState>
@@ -68,7 +68,7 @@ class MainPage : Component<MainPageState>
         };
     }
 
-    private void OnItemSelected(PickerItem item)
+    private void OnItemSelected(PickerItem? item)
     {
         SetState(s =>
         {

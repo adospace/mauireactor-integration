@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using AndroidX.Annotations;
 using MauiReactor;
 using MauiReactor.Internals;
 using Microsoft.Maui.Controls;
@@ -163,6 +162,12 @@ public static partial class SfListViewExtensions
 
     public static T LoadMoreTemplate<T>(this T listView, Func<VisualNode>? template) where T : ISfListView
     {
+        if (template == null)
+        {
+            listView.LoadMoreTemplate = null;
+            return listView;
+        }
+
         listView.LoadMoreTemplate = new DataTemplate(() =>
         {
             var root = template.Invoke();
@@ -368,3 +373,7 @@ public partial class SfTabItem
         this.Header(header);
     }
 }
+
+[Scaffold(typeof(Syncfusion.Maui.Calendar.SfCalendar))]
+public partial class SfCalendar
+{ }
