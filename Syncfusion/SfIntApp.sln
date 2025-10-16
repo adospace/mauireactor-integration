@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.33711.374
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SfIntApp", "SfIntApp\SfIntApp.csproj", "{0FE35DAD-F718-41BA-BAF9-E4E8F25F6FA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SfEnterpriseIntApp", "SfEnterpriseIntApp\SfEnterpriseIntApp.csproj", "{2CCC0F2C-9169-401E-9060-6D159BDA9AE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{0FE35DAD-F718-41BA-BAF9-E4E8F25F6FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FE35DAD-F718-41BA-BAF9-E4E8F25F6FA6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0FE35DAD-F718-41BA-BAF9-E4E8F25F6FA6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2CCC0F2C-9169-401E-9060-6D159BDA9AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CCC0F2C-9169-401E-9060-6D159BDA9AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CCC0F2C-9169-401E-9060-6D159BDA9AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CCC0F2C-9169-401E-9060-6D159BDA9AE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

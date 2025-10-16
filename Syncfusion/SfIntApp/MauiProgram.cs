@@ -10,7 +10,7 @@ namespace SfIntApp
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiReactorApp<CalendarPage>()
+                .UseMauiReactorApp<TabViewPage>()
                 .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
